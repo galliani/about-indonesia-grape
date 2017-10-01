@@ -4,8 +4,15 @@ module Routes
       version 'v1'
       format :json
 
-      include Routes::V1::Provinces
+      helpers Routes::V1::RequestValidator
 
+      # Run all before_filters necessary for this version endpoints
+      # Some validation and authentication could be good
+      before do
+        prevent_unauthorized_access!
+      end
+
+      include Routes::V1::Provinces
     end
   end
 end

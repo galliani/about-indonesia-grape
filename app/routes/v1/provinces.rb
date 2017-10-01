@@ -23,7 +23,7 @@ module Routes
           desc 'Create a province.'
           params do
             requires :province, type: Hash do
-              requires :name, type: String, desc: 'Your Province.'
+              requires :name, type: String, desc: 'Name of the Province.'
             end          
           end
           post do
@@ -34,7 +34,7 @@ module Routes
           params do
             requires :id, type: String, desc: 'Province ID.'
             requires :province, type: Hash do
-              requires :name, type: String, desc: 'Your Province.'
+              requires :name, type: String, desc: 'Name of the Province.'
             end
           end
           put ':id' do
@@ -49,7 +49,7 @@ module Routes
             Province.find(params[:id]).destroy
           end
         end        
-        
+
       end      
     end
   end

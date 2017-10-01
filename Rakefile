@@ -18,6 +18,18 @@ namespace :db do
   end
 end
 
+desc "API Routes"
+task :routes do
+  require_relative 'config/application'
+  
+  Routes::Base.routes.each do |api|
+    method = api.route_method.ljust(10)
+    path = api.route_path
+    puts "#{method} #{path}"
+  end
+end
+
+
 # Rake::TestTask.new do |t|
 #   t.libs << 'test'
 #   t.test_files = FileList['test/**/*_test.rb']
